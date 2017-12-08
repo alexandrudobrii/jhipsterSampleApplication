@@ -1,0 +1,28 @@
+// define Employee entity
+entity Employee {	
+	firstName String,
+	lastName String,
+	hireDate Instant,
+	salary Long
+}
+
+// define Job entity
+entity Job {
+	jobTitle String,
+	minSalary Long,
+	maxSalary Long
+}
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+	Employee{job} to Job
+}
+
+// Set pagination options
+paginate Job, Employee with infinite-scroll
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+angularSuffix * with mySuffix
